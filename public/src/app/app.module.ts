@@ -6,8 +6,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
-import { DestroyComponent } from './destroy/destroy.component';
 import { ReadComponent } from './read/read.component';
+
+//FOR SERVICE TO CLIENT
+import { HttpService } from './http.service';
+import { HttpClientModule } from '@angular/common/http';
+//FOR SERVICE TO CLIENT
+//FOR FORM MODEL USE
+import { FormsModule } from '@angular/forms';
+//FOR FORM MODEL USE
 
 @NgModule({
   declarations: [
@@ -15,14 +22,17 @@ import { ReadComponent } from './read/read.component';
     HomeComponent,
     CreateComponent,
     UpdateComponent,
-    DestroyComponent,
     ReadComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //add for client
+    HttpClientModule,
+    //add for forms
+    FormsModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,44 @@
-<p>create works!</p>
+<div>
+    <form ><!--POST A Product-->
+        <table class="table">
+            <tr>
+                <td>
+                    <input type="text" name="newProduct.title" 
+                    placeholder="title"
+                    required
+                    minlength="3"
+                    maxlength="20"
+                    [(ngModel)]="newProduct.title" 
+                    #title = "ngModel"
+                    >
+                    <span *ngIf="!title.pristine && title.errors" 
+                    class="d-inline-block text-danger">Title Error</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" name="newProduct.price" 
+                    placeholder="price"
+                    required
+                    min="0"
+                    max="1000"
+                    [(ngModel)]="newProduct.price" 
+                    #title = "ngModel"
+                    >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="newProduct.image"  placeholder="image url" maxlength="1000">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <a [routerLink]="['/read']"><button>Cancel</button> </a>
+                        <button (click) = "giveProductToService()" [routerLink]="['/read']" type="button">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form><!--POST A Product-->
+<router-outlet></router-outlet>
+</div>

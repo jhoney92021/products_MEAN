@@ -1,1 +1,25 @@
-<p>read works!</p>
+<h3>All the Products</h3>
+<div >
+    <table *ngFor="let idx of allProducts | keyvalue" class="table"><!--Table for all Products-->
+        <br>
+        <tr>
+            <td>
+                <br>
+                <b>Title: {{idx.value['title']}}</b>
+                <br>
+                <b>Price: {{idx.value.price}}</b>
+                <br>
+            </td>
+            <td>
+                <img [src]="idx.value.image" alt="image would go here" style="height: 200px; width: auto;">
+            </td>
+            <td>
+                <a [routerLink]="['/products/edit', idx.value._id]" ><button style="width:60px;height:auto;">Edit</button></a>
+                <br>
+                <button (click)="removeProductFromService(idx.value._id)" (click)="getProductsFromService()" style="width:60px;height:auto;">Delete</button>
+            </td>
+        </tr>
+        <br>
+    </table><!--Table for all Products-->
+</div>
+<router-outlet></router-outlet>
